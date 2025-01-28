@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MAGMA FIRE - Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Roboto Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ====== GLOBAL RESET & FONT ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+    }
+
+    /* ====== FIXED HEADER & FOOTER ====== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #b71c1c;
+      color: #fff;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #b71c1c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    /* DESKTOP MENU */
+    .menu {
+      list-style: none;
+      display: flex; /* horizontal by default */
+      gap: 1em;
+      transition: max-height 0.3s ease; /* For the mobile toggle */
+    }
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5em 1em;
+      transition: background 0.3s;
+    }
+    .menu li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    /* MAIN CONTENT (PUSHED BELOW HEADER & ABOVE FOOTER) */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-top: 80px;    /* space for fixed header */
+      margin-bottom: 60px; /* space for fixed footer */
+      padding: 2em 1em;
+      min-height: calc(100vh - 80px - 60px);
+    }
+
+    h2 {
+      margin-bottom: 1em;
+      color: #d32f2f;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* PRODUCT CARDS */
+    .product-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2em;
+    }
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.5em;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1em;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* ====== MOBILE MENU (Hamburger) ====== */
+    .hamburger {
+      display: none;        /* hidden on desktop */
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+    }
+    .bar {
+      height: 3px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    /* Show hamburger & collapse menu on mobile */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .menu {
+        position: absolute;
+        top: 80px;                /* below fixed header */
+        left: 0;
+        width: 100%;
+        background: #b71c1c;
+        flex-direction: column;   /* stack items vertically */
+        gap: 0;
+        max-height: 0;           /* hidden by default */
+        overflow: hidden;
+      }
+      .menu.active {
+        max-height: 300px;       /* show items when active */
+      }
+      .menu li a {
+        display: block;
+        width: 100%;
+        padding: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">MAGMA FIRE</div>
+
+      <!-- HAMBURGER BUTTON (for mobile) -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <!-- NAV MENU -->
+      <ul class="menu" id="mobileMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h2>Our Products</h2>
+    <div class="product-cards">
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 1" 
+        />
+        <h3>Fire Extinguisher</h3>
+        <p>
+          High-quality extinguishers designed to keep your premises safe.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 2" 
+        />
+        <h3>Smoke Alarm</h3>
+        <p>
+          Early detection devices for maximum warning and safety.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 3" 
+        />
+        <h3>Fire Hose</h3>
+        <p>
+          Durable hoses to handle any fire emergency effectively.
+        </p>
+      </div>
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 1" 
+        />
+        <h3>Fire Extinguisher</h3>
+        <p>
+          High-quality extinguishers designed to keep your premises safe.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 2" 
+        />
+        <h3>Smoke Alarm</h3>
+        <p>
+          Early detection devices for maximum warning and safety.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 3" 
+        />
+        <h3>Fire Hose</h3>
+        <p>
+          Durable hoses to handle any fire emergency effectively.
+        </p>
+      </div>
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 1" 
+        />
+        <h3>Fire Extinguisher</h3>
+        <p>
+          High-quality extinguishers designed to keep your premises safe.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 2" 
+        />
+        <h3>Smoke Alarm</h3>
+        <p>
+          Early detection devices for maximum warning and safety.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 3" 
+        />
+        <h3>Fire Hose</h3>
+        <p>
+          Durable hoses to handle any fire emergency effectively.
+        </p>
+      </div><div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 1" 
+        />
+        <h3>Fire Extinguisher</h3>
+        <p>
+          High-quality extinguishers designed to keep your premises safe.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 2" 
+        />
+        <h3>Smoke Alarm</h3>
+        <p>
+          Early detection devices for maximum warning and safety.
+        </p>
+      </div>
+
+      <div class="product-card">
+        <img 
+          src="product.jpg" 
+          alt="Product 3" 
+        />
+        <h3>Fire Hose</h3>
+        <p>
+          Durable hoses to handle any fire emergency effectively.
+        </p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 MAGMA FIRE. All rights reserved.</p>
+  </footer>
+
+  <!-- JS for Hamburger Menu Toggle -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
